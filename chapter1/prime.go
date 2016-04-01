@@ -29,7 +29,7 @@ func primes(ceiling int) {
     candidate := 3
     found := 1
     for found < ceiling {
-        if found < 999 {
+        if found < 0 {
             if is_prime(primes, candidate) {
                 primes[found] = candidate
                 found++
