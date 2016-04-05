@@ -29,7 +29,7 @@ func primes(ceiling int) {
     candidate := 3
     found := 1
     for found < ceiling {
-        if found < 100 {
+        if found < ceiling {
             if is_prime(primes, candidate) {
                 primes[found] = candidate
                 found++
@@ -67,6 +67,6 @@ func primes(ceiling int) {
 
 func main() {
     start := time.Now()
-    primes(1000)
+    primes(10000)
     fmt.Println(time.Now().Sub(start))
 }
