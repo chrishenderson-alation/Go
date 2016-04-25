@@ -5,6 +5,7 @@ import "bufio"
 import "os"
 import "strconv"
 import "strings"
+import "bytes"
 
 func main() {
     in := bufio.NewReader(os.Stdin)
@@ -13,7 +14,7 @@ func main() {
     var plays uint64
     for ; numberOfPlays > 0; numberOfPlays-- {
         input, _ := in.ReadString('\n')
-        plays, _ = strconv.ParseUint(strings.TrimSpace(input), 2, 64)
+        plays, _ = strconv.ParseUint(strings.TrimSpace(input), 10, 64)
         winner := play(plays)
         fmt.Println(winner)
     }
@@ -23,7 +24,7 @@ func play(n uint64) string {
     i := 1
     for ;n > 1; i++ {
         if isPowerOf2(n) {
-            n /= 2
+            n -= n >> 1
         } else {
             n -= getNearestN(n)
         }
@@ -36,20 +37,32 @@ func play(n uint64) string {
 }
 
 func getNearestN(n uint64) uint64 {
-    for ; !isPowerOf2(n); n-- {
-        
+    binary := strconv.FormatUint(n, 2)
+    var buffer bytes.Buffer
+    firstBitSet := false
+    for _, bit := range binary {
+        if !firstBitSet && bit == 49 {
+            buffer.WriteByte('1')
+            firstBitSet = true
+        } else {
+            buffer.WriteByte('0')
+        }
     }
-    return n
+    result, _ := strconv.ParseUint(buffer.String(), 2, 64)
+    return result
 }
 
 func isPowerOf2(n uint64) bool {
-    var power uint64 = 2
-    for ;; power <<= 1 {
-        if power > n {
-            return false
-        }
-        if power == n {
-            return true
+    binary := strconv.FormatUint(n, 2)
+    singleBitSet := false
+    for _, bit := range binary {
+        if bit == 49 {
+            if singleBitSet {
+                return false
+            } else {
+                singleBitSet = true
+            }
         }
     }
+    return singleBitSet
 }
