@@ -21,9 +21,20 @@ type Acrostic struct {
 }
 
 var ACROSTICS []*Acrostic = []*Acrostic{
-	&Acrostic{"J", "Just fucking amazing.", "Of fucking course."},
+	&Acrostic{"J", "Just fucking amazing.", "tRuE"},
 	&Acrostic{"i", "Intergalactic hyper star.", "Of fucking course."},
 	&Acrostic{"l", "Last time I heard, really damned nice.", "Of fucking course."},
+	&Acrostic{"l", "...really good at parsing Logs? Damned second L...", "Sorry for that one, there's more."},
+	&Acrostic{"i", "Intergalactic hyper star.", "Of fucking course."},
+	&Acrostic{"a", "Last time I heard, really damned nice.", "Of fucking course."},
+	&Acrostic{"n", "Last time I heard, really damned nice.", "Of fucking course."},
+	
+	&Acrostic{"K", "By far the Kindest and most considerate person I know.", "Of fucking course."},
+	&Acrostic{"a", "So damned Accomplished.", "Of fucking course."},
+	&Acrostic{"r", "Last time I heard, really damned nice.", "Of fucking course."},
+	&Acrostic{"n", "Last time I heard, really damned nice.", "Of fucking course."},
+	&Acrostic{"e", "Last time I heard, really damned nice.", "Of fucking course."},
+	&Acrostic{"r", "Last time I heard, really damned nice.", "Of fucking course."},
 }
 
 func getResponse(resetting bool) BirthdayResponse {
